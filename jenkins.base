@@ -1,0 +1,40 @@
+pipeline{
+    agent any
+    stages{
+        stage("checkout"){
+            steps{
+                deleteDir()
+                sh '''
+                    echo "Checkout from github"
+                    git clone https://github.com/binubalantk/aws-s3-angular-dev-app.git
+                '''
+            }
+        }
+        stage("install dependencies"){
+            steps{
+                dir("aws-s3-angular-dev-app"){
+                    sh 'npm install'
+                }
+            }
+        }
+        stage("build"){
+            steps{
+                dir("aws-s3-angular-dev-app"){
+                    sh 'ng build --prod --aot'
+                }
+            }
+        }
+        stage("deploy"){
+            steps{
+                dir("aws-s3-angular-dev-app"){
+                    sh 'ng serve'
+                }
+            }
+        }
+    }
+    post{
+        always{
+            echo "onpost always"
+        }
+    }
+}
