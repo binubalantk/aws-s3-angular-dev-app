@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/aws-s3-angular-dev-app",
+            "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -23,9 +23,15 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "./node_modules/materialize-css/dist/css/materialize.css"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/jquery/dist/jquery.js",
+              "./node_modules/hammerjs/hammer.js",
+              "./node_modules/materialize-css/dist/js/materialize.js",
+              "./node_modules/chart.js/dist/Chart.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -72,9 +78,15 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "./node_modules/materialize-css/dist/css/materialize.css"
             ],
-            "scripts": [],
+            "scripts": [
+              "./node_modules/jquery/dist/jquery.js",
+              "./node_modules/hammerjs/hammer.js",
+              "./node_modules/materialize-css/dist/js/materialize.js",
+              "./node_modules/chart.js/dist/Chart.js"
+            ],
             "assets": [
               "src/favicon.ico",
               "src/assets"
