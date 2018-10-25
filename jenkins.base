@@ -27,7 +27,7 @@ pipeline{
         stage("deploy"){
             steps{
                 dir("aws-s3-angular-dev-app"){
-                    sh 'ng serve'
+                    sh '$HOME/.local/bin/aws s3 cp ./dist s3://aws-s3-angular-dev-app.cybostallion.com --recursive --acl public-read'
                 }
             }
         }
@@ -35,6 +35,7 @@ pipeline{
     post{
         always{
             echo "onpost always"
+            deleteDir()
         }
     }
 }
